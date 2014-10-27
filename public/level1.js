@@ -22,7 +22,7 @@ Level1.prototype.create= function(){
 	ledge.body.immovable = true;
 
   ground.body.immovable = true;
-  
+
   ground.scale.setTo(2, 2);
 
   ledge = this.platforms.create(game.world.width / 2, 450, 'platforms');
@@ -33,7 +33,7 @@ Level1.prototype.create= function(){
   ledge.body.immovable = true;
   ledge = this.platforms.create(-100, 350, 'platforms', 0, true);
   ledge.body.immovable = true;
-  
+
   //ledge3.scale.setTo(0.8, 1);
   //ledge.scale.setTo(0.5, 1);
   //ledge2.scale.setTo(0.4, 1;
