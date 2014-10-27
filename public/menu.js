@@ -7,7 +7,8 @@ Menu.prototype.preload = function(){
 };
 
 Menu.prototype.create= function(){
-  this.background = this.game.add.sprite(0, 0, 'background');
+  this.background = this.game.add.sprite(game.world.centerX, game.world.centerY, 'background');
+  this.background.anchor.setTo(0.5, 0.5);
   this.title  = game.add.text(game.world.centerX, 40, 'Burger Town', { font: "30px Arial", fill: "red" });
   this.title.anchor.setTo(0.5, 0.5);
   this.startButton = this.game.add.button(this.game.width/2, 300, 'button', this.startClick, this);
