@@ -1,24 +1,33 @@
 // MENU STATE
 var Level1 = function(){};
 
+var player = new Player();
+
 Level1.prototype.preload = function(){
 	game.load.image('platforms', 'assets/platform.png');
   game.load.image('hamburger', 'assets/hamburger.jpg');
   game.load.image('hotdog', 'assets/hotdog.png');
+	game.load.image('background', 'assets/sky4.png');
+  player.preload();
 };
 
-var player;
-
 Level1.prototype.create= function(){
+  game.add.sprite(0, 0, 'background');
   this.platforms = game.add.group();
   this.platforms.enableBody = true;
-  
 
   var ground = this.platforms.create(0, game.world.height - 24, 'platforms');
-  ground.scale.setTo(2, 2);
+  var ledge  = this.platforms.create();
   ground.body.immovable = true;
+  ground.scale.setTo(2, 2);
 
-  //create player group
+  ledge = this.platforms.create(game.world.width / 2, 300, 'platforms');
+
+  this.platforms.create(0, 0, 'platforms', 0, true);
+
+  this.platforms.create();
+  //create player
+	player.create();
 
   //enemies
   this.placeEnemies();
@@ -49,7 +58,6 @@ Level1.prototype.placeEnemies = function(){
       hamburger.body.gravity.y = 300;
   }
 
-  console.log(this.enemies);
 
 }
 
