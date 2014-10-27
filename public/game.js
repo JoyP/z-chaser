@@ -9,6 +9,7 @@ var game;
   //Game states are added to the Game Object. When a game
   //is made, State().start will be the default starting state
   game.state.add('menu', Menu);
+  game.state.add('level1', Level1);
   game.state.start('menu');
 
 })();
