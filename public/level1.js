@@ -24,7 +24,7 @@ Level1.prototype.create= function(){
 
   ledge = this.platforms.create(game.world.width / 2, 450, 'platforms');
   ledge.body.immovable = true;
-  ledge = this.platforms.create(game.world.width / 2 -200, 100, 'platforms');
+  ledge = this.platforms.create(game.world.width / 2 -300, 150, 'platforms');
   ledge.body.immovable = true;
   ledge = this.platforms.create(game.world.width / 2, 250, 'platforms');
   ledge.body.immovable = true;

@@ -39,7 +39,7 @@ Player.prototype.update = function(platforms){
   }
 
   if(cursors.up.isDown && this.player.body.touching.down){
-    this.player.body.velocity.y = -350;
+    this.player.body.velocity.y = -420;
   }
 
   game.physics.arcade.collide(platforms);
