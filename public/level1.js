@@ -2,15 +2,18 @@
 var Level1 = function(){};
 
 Level1.prototype.preload = function(){
-	platforms.preload();
+	game.load.image('platforms', 'assets/platform.png');
 };
 
 var player;
 
 Level1.prototype.create= function(){
-  console.log('level1 created');
+  this.platforms = game.add.group();
+  this.platforms.enableBody = true;
+  
+  this.platforms.create(0, 0, 'platforms', 0, true);
 
-  platforms.create();
+  this.platforms.create();
   //create player group
 
   //create platforms group
