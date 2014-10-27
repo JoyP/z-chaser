@@ -1,15 +1,14 @@
 var Player = function(){};
 
 Player.prototype.preload = function(){
-  game.load.spritesheet('dude', '../assets/player.png', 60, 60);
+  game.load.spritesheet('dude', '../assets/player.png', 50, 50);
 };
 
 Player.prototype.create = function(){
 
   // player animations for walking
-  this.player = game.add.sprite(24, game.world.height - 150, 'dude');
+  this.player = game.add.sprite(50, game.world.height - 150, 'dude');
   this.player.scale.setTo(2, 2);
-  console.log('PLAYER>>>', this.player);
   game.physics.arcade.enable(this.player);
   this.player.body.bounce.y = 0.7;
   this.player.body.gravity.y = 500;
@@ -21,8 +20,8 @@ Player.prototype.create = function(){
   cursors = game.input.keyboard.createCursorKeys();
 };
 
-Player.prototype.update = function(platform, burgers, hotdogs){
-  game.physics.arcade.collide(this.player, platforms);
+Player.prototype.update = function(platforms, enemies){
+  game.physics.arcade.collide(platforms, enemies);
 
   this.player.body.velocity.x = 0;
 
@@ -35,14 +34,13 @@ Player.prototype.update = function(platform, burgers, hotdogs){
   }else{
     // this.player facing forward when not moving
     this.player.animations.stop();
-    this.player.frame = 15;
+    this.player.frame = 26;
   }
 
   if(cursors.up.isDown && this.player.body.touching.down){
     this.player.body.velocity.y = -350;
   }
 
-  game.physics.arcade.collide(platforms);
-  game.physics.arcade.overlap(this.player, burgers, burgerChange, null, this);
+//  game.physics.arcade.overlap(this.player, enemies, null, this);
 
 };

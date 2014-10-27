@@ -18,6 +18,9 @@ Level1.prototype.create= function(){
 
   var ground = this.platforms.create(0, game.world.height - 24, 'platforms');
   var ledge  = this.platforms.create();
+	ledge.enableBody = true;
+	ledge.body.immovable = true;
+
   ground.body.immovable = true;
   ground.scale.setTo(2, 2);
 
@@ -37,6 +40,7 @@ Level1.prototype.create= function(){
 
 Level1.prototype.update =function(){
   game.physics.arcade.collide(this.enemies, this.platforms);
+	player.update(this.platforms, this.enemies);
 };
 
 Level1.prototype.nextLevel = function(){
