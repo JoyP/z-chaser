@@ -6,14 +6,12 @@ Level1.prototype.preload = function(){
 };
 
 var player;
-var platforms;
 
 Level1.prototype.create= function(){
   console.log('level1 created');
   //create player group
 
   //create platforms group
-
 
 };
 
