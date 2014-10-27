@@ -2,10 +2,15 @@ var game;
 
 (function(){
   'use strict';
+
+  //width, height, type of medium to use, what element to attach canvas to, function that will be used
   game = new Phaser.Game(800, 600, Phaser.AUTO, 'gameDiv');
 
-  game.state.add('menu', Play);
+  //--GAME STATES
+  //Game states are added to the Game Object. When a game
+  //is made, State().start will be the default starting state
+  game.state.add('menu', Menu);
+  game.state.add('level1', Level1);
   game.state.start('menu');
-
 
 })();
