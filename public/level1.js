@@ -5,7 +5,7 @@ var player = new Player();
 
 Level1.prototype.preload = function(){
 	game.load.image('platforms', 'assets/platform.png');
-  game.load.image('hamburger', 'assets/hamburger.jpg');
+  game.load.image('hamburger', 'assets/hamburger.png');
   game.load.image('hotdog', 'assets/hotdog.png');
 	game.load.image('background', 'assets/sky4.png');
   player.preload();
@@ -46,6 +46,8 @@ Level1.prototype.create= function(){
 
 Level1.prototype.update =function(){
   game.physics.arcade.collide(this.enemies, this.platforms);
+  game.physics.arcade.overlap(player, this.enemies, this.getBurger, null, this);
+  player.update(this.platforms);
 };
 
 Level1.prototype.nextLevel = function(){
@@ -57,11 +59,13 @@ Level1.prototype.placeEnemies = function(){
   this.enemies.enableBody = true;
 
 
-  //create 8 burgers
-  for (var i = 0; i < 8; i++){
+  //create 10 burgers
+  for (var i = 0; i < 10; i++){
       var r = Math.floor(Math.random() * 599) + 1;
       //  Create a star inside of the 'stars' group
-      var hamburger = this.enemies.create(i * 70, r + 25, 'hamburger');
+      var hamburger = this.enemies.create(i * 70, r + 40, 'hamburger');
+      hamburger.width = 20;
+      hamburger.height = 20;
 
       //  Let gravity do its thing
       hamburger.body.gravity.y = 300;
@@ -70,6 +74,14 @@ Level1.prototype.placeEnemies = function(){
 
 }
 
-Level1.prototype.getBurger = function(){
+Level1.prototype.hotDogTransform = function(enemy){
+  burger.body.velocity.x = Math.random() + 2;
+  burger.body.bounce.y = 0.5;
+  burger.body.gravity.y = 600;
 
+}
+
+Level1.prototype.getBurger = function(player, enemy){
+
+  console.log('you got the burger');
 }
