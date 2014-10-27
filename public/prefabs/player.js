@@ -12,7 +12,7 @@ Player.prototype.create = function(){
   this.player.width = 40; 
   game.physics.arcade.enable(this.player);
   this.player.body.bounce.y = 0.2;
-  this.player.body.gravity.y = 600;
+  this.player.body.gravity.y = 500;
   this.player.body.collideWorldBounds = true;
 
   // this.player animations for walking
@@ -39,7 +39,7 @@ Player.prototype.update = function(platforms){
   }
 
   if(cursors.up.isDown && this.player.body.touching.down){
-    this.player.body.velocity.y = -350;
+    this.player.body.velocity.y = -450;
   }
 
   game.physics.arcade.collide(platforms);
