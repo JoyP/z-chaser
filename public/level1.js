@@ -1,13 +1,15 @@
 // MENU STATE
 var Level1 = function(){};
 
+var player = new Player();
+
 Level1.prototype.preload = function(){
 	game.load.image('platforms', 'assets/platform.png');
+  game.load.image('hamburger', 'assets/hamburger.jpg');
+  game.load.image('hotdog', 'assets/hotdog.png');
 	game.load.image('background', 'assets/sky4.png');
-
+  player.preload();
 };
-
-var player = new Player();
 
 Level1.prototype.create= function(){
   game.add.sprite(0, 0, 'background');
@@ -27,15 +29,38 @@ Level1.prototype.create= function(){
   //create player
 	player.create();
 
-  //create platforms group
+  //enemies
+  this.placeEnemies();
 
 
 };
 
 Level1.prototype.update =function(){
-
+  game.physics.arcade.collide(this.enemies, this.platforms);
 };
 
 Level1.prototype.nextLevel = function(){
   game.state.start('level2');
 };
+
+Level1.prototype.placeEnemies = function(){
+  this.enemies = game.add.group();
+  this.enemies.enableBody = true;
+
+
+  //create 8 burgers
+  for (var i = 0; i < 8; i++){
+      var r = Math.floor(Math.random() * 599) + 1;
+      //  Create a star inside of the 'stars' group
+      var hamburger = this.enemies.create(i * 70, r + 25, 'hamburger');
+
+      //  Let gravity do its thing
+      hamburger.body.gravity.y = 300;
+  }
+
+
+}
+
+Level1.prototype.getBurger = function(){
+
+}
