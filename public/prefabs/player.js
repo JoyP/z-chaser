@@ -1,11 +1,12 @@
 var Player = function(){};
 
 Player.prototype.preload = function(){
-  game.load.spritesheet('dude', 'assets/player.png', 24, 24);
+  game.load.spritesheet('dude', '../assets/player.png', 24, 24);
 };
 
 Player.prototype.create = function(){
-  player = game.add.sprite(24, game.world.height - 400, 'dude');
+  player = game.add.sprite(24, game.world.height - 25, 'dude');
+  console.log('PLAYER>>>', player);
   game.physics.arcade.enable(player);
   player.body.bounce.y = 0.7;
   player.body.gravity.y = 500;

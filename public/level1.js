@@ -7,7 +7,7 @@ Level1.prototype.preload = function(){
 
 };
 
-var player;
+var player = new Player();
 
 Level1.prototype.create= function(){
   game.add.sprite(0, 0, 'background');
@@ -24,7 +24,8 @@ Level1.prototype.create= function(){
   this.platforms.create(0, 0, 'platforms', 0, true);
 
   this.platforms.create();
-  //create player group
+  //create player
+	player.create();
 
   //create platforms group
 
