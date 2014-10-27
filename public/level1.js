@@ -41,12 +41,13 @@ Level1.prototype.create= function(){
   //enemies
   this.placeEnemies();
 
+  console.log(this.enemies);
 
 };
 
 Level1.prototype.update =function(){
   game.physics.arcade.collide(this.enemies, this.platforms);
-  game.physics.arcade.overlap(player, this.enemies, this.getBurger, null, this);
+  game.physics.arcade.overlap(player.player, this.enemies, this.getBurger, null, this);
   player.update(this.platforms);
 };
 
@@ -75,13 +76,14 @@ Level1.prototype.placeEnemies = function(){
 }
 
 Level1.prototype.hotDogTransform = function(enemy){
-  burger.body.velocity.x = Math.random() + 2;
-  burger.body.bounce.y = 0.5;
-  burger.body.gravity.y = 600;
+  //crazy hotdog bouncing
+  enemy.body.velocity.x = Math.random() + 2;
+  enemy.body.bounce.y = 0.5;
+  enemy.body.gravity.y = 600;
 
 }
 
 Level1.prototype.getBurger = function(player, enemy){
-
+  this.hotDogTransform(enemy);
   console.log('you got the burger');
 }
