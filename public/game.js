@@ -2,6 +2,7 @@ var game;
 
 (function(){
   'use strict';
+
   //width, height, type of medium to use, what element to attach canvas to, function that will be used
   game = new Phaser.Game(800, 600, Phaser.AUTO, 'gameDiv');
 
