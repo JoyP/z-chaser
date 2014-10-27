@@ -19,15 +19,24 @@ Level1.prototype.create= function(){
   var ground = this.platforms.create(0, game.world.height - 24, 'platforms');
   var ledge  = this.platforms.create();
   ground.body.immovable = true;
+  
   ground.scale.setTo(2, 2);
 
-  ledge = this.platforms.create(game.world.width / 2, 300, 'platforms');
+  ledge = this.platforms.create(game.world.width / 2, 450, 'platforms');
+  ledge.body.immovable = true;
+  ledge = this.platforms.create(game.world.width / 2 -200, 100, 'platforms');
+  ledge.body.immovable = true;
+  ledge = this.platforms.create(game.world.width / 2, 250, 'platforms');
+  ledge.body.immovable = true;
+  ledge = this.platforms.create(-100, 350, 'platforms', 0, true);
+  ledge.body.immovable = true;
+  
+  //ledge3.scale.setTo(0.8, 1);
+  //ledge.scale.setTo(0.5, 1);
+  //ledge2.scale.setTo(0.4, 1;
 
-  this.platforms.create(0, 0, 'platforms', 0, true);
-
-  this.platforms.create();
   //create player
-	player.create();
+  player.create();
 
   //enemies
   this.placeEnemies();
