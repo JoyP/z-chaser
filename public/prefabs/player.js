@@ -5,7 +5,7 @@ Player.prototype.preload = function(){
 };
 
 Player.prototype.create = function(){
-  player = game.add.sprite(24, game.world.height - 25, 'dude');
+  player = game.add.sprite(24, game.world.height - 50, 'dude');
   console.log('PLAYER>>>', player);
   game.physics.arcade.enable(player);
   player.body.bounce.y = 0.7;
@@ -13,8 +13,8 @@ Player.prototype.create = function(){
   player.body.collideWorldBounds = true;
 
   // player animations for walking
-  player.animations.add('left', [71, 72,, 73, 74, 78], 10, true);
-  player.animations.add('right', [89, 90,91,92,96], 10, true);
+  player.animations.add('left', [105, 106, 107, 108, 112], 10, true);
+  player.animations.add('right', [131, 132, 133, 134, 138], 10, true);
   cursors = game.input.keyboard.createCursorKeys();
 };
 
@@ -41,12 +41,12 @@ Player.prototype.update = function(){
 
   game.physics.arcade.collide(platforms);
   // touch burger
-  game.physics.arcade.overlap(player, burgers, burgerChange, null, this);
+//  game.physics.arcade.overlap(player, burgers, burgerChange, null, this);
 
-  function burgerChange(player, burger){
+//  function burgerChange(player, burger){
     // burger changes to hotdog
 
-    burger.kill
-  };
+//    burger.kill
+//  };
 
 };
