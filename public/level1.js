@@ -49,6 +49,7 @@ Level1.prototype.update =function(){
   game.physics.arcade.collide(this.enemies, this.platforms);
   game.physics.arcade.overlap(player.player, this.enemies, this.getBurger, null, this);
   player.update(this.platforms);
+  this.checkHotDogBounds();
 };
 
 Level1.prototype.nextLevel = function(){
@@ -64,7 +65,7 @@ Level1.prototype.placeEnemies = function(){
   for (var i = 0; i < 10; i++){
       var r = Math.floor(Math.random() * 599) + 1;
       //  Create a star inside of the 'stars' group
-      var hamburger = this.enemies.create(i * 70, r + 40, 'hamburger');
+      var hamburger = this.enemies.create(i * 70, r + 100, 'hamburger');
       hamburger.width = 20;
       hamburger.height = 20;
 
@@ -76,14 +77,48 @@ Level1.prototype.placeEnemies = function(){
 }
 
 Level1.prototype.hotDogTransform = function(enemy){
-  //crazy hotdog bouncing
-  enemy.body.velocity.x = Math.random() + 2;
-  enemy.body.bounce.y = 0.5;
-  enemy.body.gravity.y = 600;
 
+  var hotdog = this.enemies.create(enemy.x + 100, -20, 'hotdog');
+  hotdog.body.velocity.x = (Math.random() * 300) - 150;
+  hotdog.width = 20;
+  hotdog.height = 20;
+  hotdog.body.bounce.y = 0.7;
+  hotdog.body.gravity.y = 250;
+  hotdog.body.collideWorldBounds = true;
+
+  //crazy hotdog bouncing
+  hotDogJump(hotdog);
+  //kill the burger
+  enemy.kill();
 }
 
 Level1.prototype.getBurger = function(player, enemy){
-  this.hotDogTransform(enemy);
-  console.log('you got the burger');
+  if(enemy.key === 'hamburger'){
+    this.hotDogTransform(enemy);
+    //add 10 points
+  }else if(enemy.key === 'hotdog'){
+    //clear the interval
+    clearInterval(enemy.jumpTimer);
+    enemy.kill();
+    //add 40 points
+  }
+
+}
+
+Level1.prototype.checkHotDogBounds = function(){
+  this.enemies.forEachAlive(function(hotdog){
+    if(hotdog.key === 'hotdog' && hotdog.position.x < 20){
+      hotdog.body.velocity.x = 100;
+    }
+    if(hotdog.key === 'hotdog' && hotdog.body.velocity.x === 0){
+      hotdog.body.velocity.x = Math.random() * -200;
+    }
+  }, this.enemies);
+};
+
+
+function hotDogJump(hotdog){
+  hotdog.jumpTimer = setInterval(function(){
+    hotdog.body.velocity.y = -200;
+  }, 3000);
 }
