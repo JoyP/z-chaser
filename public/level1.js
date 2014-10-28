@@ -66,9 +66,11 @@ Level1.prototype.placeEnemies = function(){
 
   //create 10 burgers
   for (var i = 0; i < 10; i++){
-      var r = Math.floor(Math.random() * 599) + 1;
-      //  Create a star inside of the 'stars' group
-      var hamburger = this.enemies.create(i * 70, r + 100, 'hamburger');
+      var r = Math.floor(Math.random() * 530) + 30;
+      //  Create a hamburger inside of the enemies group
+      var hamburger = this.enemies.create(i * 70 + 75, r, 'hamburger');
+			hamburger.x = i * 70 + 75;
+			hamburger.y = r;
       hamburger.width = 20;
       hamburger.height = 20;
 
@@ -124,4 +126,8 @@ function hotDogJump(hotdog){
   hotdog.jumpTimer = setInterval(function(){
     hotdog.body.velocity.y = -200;
   }, 3000);
+}
+
+function burgerTween(burger){
+
 }
