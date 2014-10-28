@@ -42,6 +42,7 @@ Level1.prototype.create= function(){
   this.placeEnemies();
 
   console.log(this.enemies);
+  game.time.events.add(Phaser.Timer.SECOND * 30, this.gameOver(), this); 
 
 };
 
@@ -123,4 +124,12 @@ function hotDogJump(hotdog){
   hotdog.jumpTimer = setInterval(function(){
     hotdog.body.velocity.y = -200;
   }, 3000);
+}
+
+Level1.prototype.gameOver = function(){
+  game.state.start('gameover');
+};
+
+Level1.prototype.render = function(){
+  game.debug.text("Time Remaining: " + game.time.events.duration, 32, 32);
 }
