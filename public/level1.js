@@ -27,9 +27,9 @@ Level1.prototype.create= function(){
   bgmusic.volume = 0.3;
   bgmusic.play();
 
-  getBurger = game.add.audio('getBurger'); 
+  getBurger = game.add.audio('getBurger');
   getBurger.volume = 1;
-  getHotdog = game.add.audio('getHotdog'); 
+  getHotdog = game.add.audio('getHotdog');
   getHotdog.volume = 1;
 
   var ground = this.platforms.create(0, game.world.height - 24, 'platforms');
@@ -60,13 +60,14 @@ Level1.prototype.create= function(){
   //enemies
   this.placeEnemies();
 
-  gameClock = game.time.events.add(30000, this.gameOver, this); 
+  gameClock = game.time.events.add(40000, this.gameOver, this); 
 
 };
 
 Level1.prototype.update =function(){
   game.physics.arcade.collide(this.enemies, this.platforms);
   game.physics.arcade.overlap(player.player, this.enemies, this.getBurger, null, this);
+  this.checkIfWon();
   player.update(this.platforms);
   this.checkHotDogBounds();
 };
@@ -87,11 +88,13 @@ Level1.prototype.placeEnemies = function(){
       var hamburger = this.enemies.create(i * 70 + 75, r, 'hamburger');
 			hamburger.x = i * 70 + 75;
 			hamburger.y = r;
+			hamburger.tweenTime = Math.floor(Math.random() * 1000) + 1500;
       hamburger.width = 20;
       hamburger.height = 20;
 
       //  Let gravity do its thing
       hamburger.body.gravity.y = 300;
+			hamburgerTween(hamburger);
   }
 
 
@@ -142,6 +145,39 @@ Level1.prototype.checkHotDogBounds = function(){
   }, this.enemies);
 };
 
+Level1.prototype.gameOver = function(){
+  bgmusic.stop();
+  game.state.start('gameover');
+};
+
+Level1.prototype.checkIfWon = function(){
+  if(this.enemies.countLiving() === 0){
+    bgmusic.stop();
+
+    game.state.start('victory');
+  }
+};
+
+Level1.prototype.render = function(){
+  game.debug.text("Time Remaining: " + game.time.events.duration, 32, 32);
+};
+
+function hamburgerTween(burger){
+	if(burger.x <= 200){
+		game.add.tween(burger).to({x: burger.x + 200}, burger.tweenTime).to({x: burger.x}, burger.tweenTime)
+		.loop()
+		.start();
+	}else if(burger.x >= 600 || burger.x <= 400){
+		game.add.tween(burger).to({x: burger.x - 200}, burger.tweenTime).to({x: burger.x}, burger.tweenTime)
+		.loop()
+		.start();
+	}else{
+		game.add.tween(burger).to({x: burger.x + 200}, burger.tweenTime).to({x: burger.x}, burger.tweenTime)
+		.loop()
+		.start();
+	}
+}
+
 
 function hotDogJump(hotdog){
   hotdog.jumpTimer = setInterval(function(){
@@ -149,15 +185,3 @@ function hotDogJump(hotdog){
   }, 3000);
 }
 
-Level1.prototype.gameOver = function(){
-  bgmusic.stop();
-  game.state.start('gameover');
-};
-
-Level1.prototype.checkIfWon = function(){
-
-};
-
-Level1.prototype.render = function(){
-  game.debug.text("Time Remaining: " + game.time.events.duration, 32, 32);
-}
