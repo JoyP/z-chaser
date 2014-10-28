@@ -34,8 +34,11 @@ Level1.prototype.create= function(){
 
   var ground = this.platforms.create(0, game.world.height - 24, 'platforms');
   var ledge  = this.platforms.create();
+	ledge.enableBody = true;
+	ledge.body.immovable = true;
+
   ground.body.immovable = true;
-  
+
   ground.scale.setTo(2, 2);
 
   ledge = this.platforms.create(game.world.width / 2, 450, 'platforms');
@@ -46,7 +49,7 @@ Level1.prototype.create= function(){
   ledge.body.immovable = true;
   ledge = this.platforms.create(-100, 350, 'platforms', 0, true);
   ledge.body.immovable = true;
-  
+
   //ledge3.scale.setTo(0.8, 1);
   //ledge.scale.setTo(0.5, 1);
   //ledge2.scale.setTo(0.4, 1;
@@ -79,9 +82,11 @@ Level1.prototype.placeEnemies = function(){
 
   //create 10 burgers
   for (var i = 0; i < 10; i++){
-      var r = Math.floor(Math.random() * 599) + 1;
-      //  Create a star inside of the 'stars' group
-      var hamburger = this.enemies.create(i * 70, r + 100, 'hamburger');
+      var r = Math.floor(Math.random() * 530) + 30;
+      //  Create a hamburger inside of the enemies group
+      var hamburger = this.enemies.create(i * 70 + 75, r, 'hamburger');
+			hamburger.x = i * 70 + 75;
+			hamburger.y = r;
       hamburger.width = 20;
       hamburger.height = 20;
 
@@ -139,4 +144,8 @@ function hotDogJump(hotdog){
   hotdog.jumpTimer = setInterval(function(){
     hotdog.body.velocity.y = -200;
   }, 3000);
+}
+
+function burgerTween(burger){
+
 }
