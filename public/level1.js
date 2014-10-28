@@ -2,12 +2,17 @@
 var Level1 = function(){};
 
 var player = new Player();
+var bgmusc, getBurger, getHotdog;
 
 Level1.prototype.preload = function(){
-	game.load.image('platforms', 'assets/platform.png');
+	game.load.image('platforms', 'assets/platform2.png');
   game.load.image('hamburger', 'assets/hamburger.png');
   game.load.image('hotdog', 'assets/hotdog.png');
-	game.load.image('background', 'assets/sky4.png');
+	game.load.image('background', 'assets/bg.jpg');
+  game.load.audio('bgmusic', 'audio/burgerRush.mp3');
+  game.load.audio('getBurger', 'audio/getBurger.mp3');
+  game.load.audio('getHotdog', 'audio/getHotdog.mp3');
+
   player.preload();
 };
 
@@ -15,6 +20,17 @@ Level1.prototype.create= function(){
   game.add.sprite(0, 0, 'background');
   this.platforms = game.add.group();
   this.platforms.enableBody = true;
+
+  //bg music
+  bgmusic = game.add.audio('bgmusic');
+  bgmusic.loop = true;
+  bgmusic.volume = 0.3;
+  bgmusic.play();
+
+  getBurger = game.add.audio('getBurger'); 
+  getBurger.volume = 1;
+  getHotdog = game.add.audio('getHotdog'); 
+  getHotdog.volume = 1;
 
   var ground = this.platforms.create(0, game.world.height - 24, 'platforms');
   var ledge  = this.platforms.create();
@@ -27,7 +43,7 @@ Level1.prototype.create= function(){
 
   ledge = this.platforms.create(game.world.width / 2, 450, 'platforms');
   ledge.body.immovable = true;
-  ledge = this.platforms.create(game.world.width / 2 -200, 100, 'platforms');
+  ledge = this.platforms.create(game.world.width / 2 -300, 150, 'platforms');
   ledge.body.immovable = true;
   ledge = this.platforms.create(game.world.width / 2, 250, 'platforms');
   ledge.body.immovable = true;
@@ -100,13 +116,18 @@ Level1.prototype.hotDogTransform = function(enemy){
 
 Level1.prototype.getBurger = function(player, enemy){
   if(enemy.key === 'hamburger'){
+    player.score += 10;
+    scoreText.text = 'Score: ' + player.score;
     this.hotDogTransform(enemy);
+    getBurger.play();
     //add 10 points
   }else if(enemy.key === 'hotdog'){
     //clear the interval
+    getHotdog.play();
+    player.score += 40;
+    scoreText.text = 'Score: ' + player.score;
     clearInterval(enemy.jumpTimer);
     enemy.kill();
-    //add 40 points
   }
 
 }
