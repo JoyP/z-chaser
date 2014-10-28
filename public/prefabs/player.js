@@ -4,7 +4,7 @@ Player.prototype.preload = function(){
   game.load.spritesheet('dude', '../assets/chef.png', 32, 32);
 };
 
-var cursors;
+var cursors, scoreText;
 
 Player.prototype.create = function(){
   this.player = game.add.sprite(24, game.world.height - 150, 'dude');
@@ -14,6 +14,8 @@ Player.prototype.create = function(){
   this.player.body.bounce.y = 0.2;
   this.player.body.gravity.y = 500;
   this.player.body.collideWorldBounds = true;
+  this.player.score = 0;
+  scoreText = game.add.text(16, 16, 'Score: 0', {fontsize: '32px', fill: '#000'});
 
   // this.player animations for walking
   this.player.animations.add('right', [24, 25, 26, 27, 28, 29], 20, true);
@@ -39,7 +41,7 @@ Player.prototype.update = function(platforms){
   }
 
   if(cursors.up.isDown && this.player.body.touching.down){
-    this.player.body.velocity.y = -450;
+    this.player.body.velocity.y = -420;
   }
 
   game.physics.arcade.collide(platforms);

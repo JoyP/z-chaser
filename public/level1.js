@@ -40,7 +40,7 @@ Level1.prototype.create= function(){
 
   ledge = this.platforms.create(game.world.width / 2, 450, 'platforms');
   ledge.body.immovable = true;
-  ledge = this.platforms.create(game.world.width / 2 -200, 100, 'platforms');
+  ledge = this.platforms.create(game.world.width / 2 -300, 150, 'platforms');
   ledge.body.immovable = true;
   ledge = this.platforms.create(game.world.width / 2, 250, 'platforms');
   ledge.body.immovable = true;
@@ -110,15 +110,18 @@ Level1.prototype.hotDogTransform = function(enemy){
 
 Level1.prototype.getBurger = function(player, enemy){
   if(enemy.key === 'hamburger'){
+    player.score += 10;
+    scoreText.text = 'Score: ' + player.score;
     this.hotDogTransform(enemy);
     getBurger.play();
     //add 10 points
   }else if(enemy.key === 'hotdog'){
     //clear the interval
     getHotdog.play();
+    player.score += 40;
+    scoreText.text = 'Score: ' + player.score;
     clearInterval(enemy.jumpTimer);
     enemy.kill();
-    //add 40 points
   }
 
 }
