@@ -8,14 +8,14 @@ var cursors, scoreText;
 
 Player.prototype.create = function(){
   this.player = game.add.sprite(24, game.world.height - 150, 'dude');
-  this.player.height = 40; 
-  this.player.width = 40; 
+  this.player.height = 40;
+  this.player.width = 40;
   game.physics.arcade.enable(this.player);
   this.player.body.bounce.y = 0.2;
   this.player.body.gravity.y = 500;
   this.player.body.collideWorldBounds = true;
   this.player.score = 0;
-  scoreText = game.add.text(16, 16, 'Score: 0', {fontsize: '32px', fill: '#000'});
+  scoreText = game.add.text(650, 16, 'Score: 0', {fontsize: '32px', fill: '#000'});
 
   // this.player animations for walking
   this.player.animations.add('right', [24, 25, 26, 27, 28, 29], 20, true);
