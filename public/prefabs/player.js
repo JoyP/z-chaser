@@ -35,7 +35,6 @@ Player.prototype.update = function(platforms){
     this.player.body.velocity.x = 150;
     this.player.animations.play('right');
   }else{
-    this.player.animations.stop();
     // this.player facing forward when not moving
     this.player.frame = 3;
   }
