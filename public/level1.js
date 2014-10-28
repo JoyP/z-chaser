@@ -94,13 +94,15 @@ Level1.prototype.hotDogTransform = function(enemy){
 
 Level1.prototype.getBurger = function(player, enemy){
   if(enemy.key === 'hamburger'){
+    player.score += 10;
+    scoreText.text = 'Score: ' + player.score;
     this.hotDogTransform(enemy);
-    //add 10 points
   }else if(enemy.key === 'hotdog'){
     //clear the interval
+    player.score += 40;
+    scoreText.text = 'Score: ' + player.score;
     clearInterval(enemy.jumpTimer);
     enemy.kill();
-    //add 40 points
   }
 
 }
