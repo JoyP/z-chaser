@@ -60,7 +60,7 @@ Level1.prototype.create= function(){
   //enemies
   this.placeEnemies();
 
-  gameClock = game.time.events.add(30000, this.gameOver, this); 
+  gameClock = game.time.events.add(40000, this.gameOver, this); 
 
 };
 
