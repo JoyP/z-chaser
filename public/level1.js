@@ -76,6 +76,7 @@ Level1.prototype.placeEnemies = function(){
 
       //  Let gravity do its thing
       hamburger.body.gravity.y = 300;
+			hamburgerTween(hamburger);
   }
 
 
@@ -128,6 +129,14 @@ function hotDogJump(hotdog){
   }, 3000);
 }
 
-function burgerTween(burger){
-
+function hamburgerTween(burger){
+	if(burger.x <= 400){
+		game.add.tween(burger).to({x: burger.x + 200}, 2000).to({x: burger.x - 200}, 2000)
+		.loop()
+		.start();
+	}else{
+		game.add.tween(burger).to({x: burger.x - 200}, 2000).to({x: burger.x + 200}, 2000)
+		.loop()
+		.start();
+	}
 }
