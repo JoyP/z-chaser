@@ -2,7 +2,7 @@
 var Level1 = function(){};
 
 var player = new Player();
-var bgmusc, getBurger, getHotdog;
+var bgmusc, getBurger, getHotdog, gameClock;
 
 Level1.prototype.preload = function(){
 	game.load.image('platforms', 'assets/platform2.png');
@@ -60,7 +60,7 @@ Level1.prototype.create= function(){
   //enemies
   this.placeEnemies();
 
-  console.log(this.enemies);
+  gameClock = game.time.events.add(30000, this.gameOver, this); 
 
 };
 
@@ -149,6 +149,15 @@ function hotDogJump(hotdog){
   }, 3000);
 }
 
-function burgerTween(burger){
+Level1.prototype.gameOver = function(){
+  bgmusic.stop();
+  game.state.start('gameover');
+};
 
+Level1.prototype.checkIfWon = function(){
+
+};
+
+Level1.prototype.render = function(){
+  game.debug.text("Time Remaining: " + game.time.events.duration, 32, 32);
 }

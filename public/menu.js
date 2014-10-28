@@ -21,7 +21,7 @@ Menu.prototype.create= function(){
   menuMusic = game.add.audio('menuMusic');
   menuMusic.loop = true;
   menuMusic.volume = 0.4;
-  menuMusic.play();tton.anchor.setTo(0.5, 0.5);
+  menuMusic.play()
 };
 
 Menu.prototype.update =function(){
