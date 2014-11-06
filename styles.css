@@ -5,10 +5,11 @@
 
 body{
   text-align: center;
+  font-weight: normal;
 }
 
 a:link{
-  text-color: black;
+  text-color: black !important;
   font-weight: normal;
 }
 
