@@ -3,6 +3,11 @@
   border:2px solid black;
 }
 
-body{
+a{
   text-decoration: none;
+  text-align: center;
+}
+
+a:hover{
+  text-color: gray;
 }
