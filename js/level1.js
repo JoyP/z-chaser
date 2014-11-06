@@ -9,9 +9,9 @@ Level1.prototype.preload = function(){
   game.load.image('hamburger', 'assets/hamburger.png');
   game.load.image('hotdog', 'assets/hotdog.png');
 	game.load.image('background', 'assets/bg.jpg');
-  game.load.audio('bgmusic', 'audio/burgerRush.mp3');
-  game.load.audio('getBurger', 'audio/getBurger.mp3');
-  game.load.audio('getHotdog', 'audio/getHotdog.mp3');
+  game.load.audio('bgmusic', 'assets/audio/burgerRush.mp3');
+  game.load.audio('getBurger', 'assets/audio/getBurger.mp3');
+  game.load.audio('getHotdog', 'assets/audio/getHotdog.mp3');
 
   player.preload();
 };
@@ -60,7 +60,7 @@ Level1.prototype.create= function(){
   //enemies
   this.placeEnemies();
 
-  gameClock = game.time.events.add(30000, this.gameOver, this); 
+  gameClock = game.time.events.add(30000, this.gameOver, this);
 
 };
 
@@ -184,4 +184,3 @@ function hotDogJump(hotdog){
     hotdog.body.velocity.y = -200;
   }, 3000);
 }
-

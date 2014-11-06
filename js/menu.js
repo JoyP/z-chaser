@@ -5,7 +5,7 @@ Menu.prototype.preload = function(){
   game.load.image('background', 'assets/burger-hotdog.jpg');
   game.load.image('button', 'assets/start-button.png');
   game.load.image('title', 'assets/burger.png');
-  game.load.audio('menuMusic', 'audio/credits.mp3');
+  game.load.audio('menuMusic', 'assets/audio/credits.mp3');
 };
 
 Menu.prototype.create= function(){

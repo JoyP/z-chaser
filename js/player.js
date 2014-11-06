@@ -1,7 +1,7 @@
 var Player = function(){};
 
 Player.prototype.preload = function(){
-  game.load.spritesheet('dude', '../assets/chef.png', 32, 32);
+  game.load.spritesheet('dude', 'assets/chef.png', 32, 32);
 };
 
 var cursors, scoreText;

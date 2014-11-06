@@ -2,7 +2,7 @@ var Gameover = function(){};
 
 Gameover.prototype.preload = function(){
   game.load.image('dishes', 'assets/Dirty_dishes.jpg');
-  game.load.audio('gameover', 'audio/gameOver.mp3');
+  game.load.audio('gameover', 'assets/audio/gameOver.mp3');
 };
 
 Gameover.prototype.create = function(){

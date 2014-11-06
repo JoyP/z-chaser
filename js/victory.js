@@ -2,8 +2,8 @@ var Victory = function(){};
 
 Victory.prototype.preload = function(){
   game.load.image('win', 'assets/win.jpeg');
-  game.load.audio('credits', 'audio/credits.mp3');
-  game.load.audio('win', 'audio/success.mp3');
+  game.load.audio('credits', 'assets/audio/credits.mp3');
+  game.load.audio('win', 'assets/audio/success.mp3');
 };
 
 Victory.prototype.create = function(){
