@@ -7,12 +7,22 @@ body{
   text-align: center;
 }
 
-a:-webkit-any-link{
+a:link{
   text-color: black;
   font-weight: normal;
 }
 
-a:-webkit-any-link:hover{
+a:hover{
+  text-color: gray;
+  font-weight: bold;
+}
+
+a:visited{
+  text-color: gray;
+  font-weight: bold;
+}
+
+a:active{
   text-color: gray;
   font-weight: bold;
 }
