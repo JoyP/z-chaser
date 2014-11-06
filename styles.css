@@ -8,6 +8,16 @@ body{
   font-weight: normal;
 }
 
+h2 > a{
+  text-color: black;
+  font-weight: normal;
+}
+
+h3 > a{
+  text-color: black;
+  font-weight: normal;
+}
+
 a:link{
   text-color: black !important;
   font-weight: normal;
