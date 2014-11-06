@@ -4,8 +4,12 @@
 }
 
 body{
-  text-decoration: none;
   text-align: center;
+}
+
+a{
+  text-decoration: none;
+  text-color: black;
 }
 
 a:hover{
