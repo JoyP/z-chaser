@@ -7,11 +7,16 @@ body{
   text-align: center;
 }
 
-a{
-  text-decoration: none;
+a:-webkit-any-link{
   text-color: black;
+  font-weight: normal;
 }
 
-a:hover{
+a:-webkit-any-link:hover{
   text-color: gray;
+  font-weight: bold;
+}
+
+a{
+  text-decoration: none;
 }
